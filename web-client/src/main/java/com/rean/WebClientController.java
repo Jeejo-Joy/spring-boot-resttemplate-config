@@ -28,4 +28,17 @@ public class WebClientController {
         return responseEntity.getBody();
     }
 
+    @GetMapping("/todo1")
+    public String todo1() {
+        var url = "http://10.255.255.255:8085/todo";
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON);
+        HttpEntity<Object> httpEntity = new HttpEntity<>(null, headers);
+
+        ResponseEntity<String> responseEntity = restTemplate.exchange(url, HttpMethod.GET, httpEntity, String.class);
+        log.info(responseEntity.getBody());
+        return responseEntity.getBody();
+    }
+
 }
